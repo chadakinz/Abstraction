@@ -9,7 +9,7 @@ LIBDIR    := -Llib
 LIBS      := -lpheval -lpheval5 -lpheval6 -lpheval7
 
 TARGET    := abstraction
-SRCS      := river_abstraction.cpp
+SRCS      := river_abstraction.cpp hand_groups.cpp
 OBJS      := $(SRCS:.cpp=.o)
 
 .PHONY: all clean
