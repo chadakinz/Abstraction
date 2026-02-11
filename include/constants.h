@@ -3,7 +3,7 @@
 #define CONSTANTS
 
 #include "c_card.h"
-#include "types.h"
+#include "common_types.h"
 
 
 inline constexpr char ranks[] = {'2','3','4','5','6','7','8','9','T','J','Q','K','A'};
@@ -13,6 +13,7 @@ inline constexpr int NUM_SUITS = 4;
 inline constexpr int NUM_DECK = 52;
 inline constexpr int NUM_TURN_CARDS = 4;
 inline constexpr int NUM_RIVER_CARDS = 5;
+inline constexpr int HANDS_TOTAL = 1326;
 static constexpr Deck init_deck(){
     Deck deck{};
     int idx = 0;

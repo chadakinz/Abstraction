@@ -2,8 +2,8 @@
 // Created by Chad Gothelf on 1/3/26.
 //
 
-#ifndef POKAH_RIVER_ABSTRACTION_H
-#define POKAH_RIVER_ABSTRACTION_H
+#ifndef OBJECTS
+#define OBJECTS
 
 
 #include <array>
@@ -12,23 +12,12 @@
 #include <string>
 #include <utility>
 #include "c_card.h"
-#include "types.h"
+#include "common_types.h"
 #include "constants.h"
 #include "hand_groups.hpp"
 
 
-
-int card_to_id(const Card& c) {
-    char ranks[] = "23456789TJQKA";
-    char suits[] = "cdhs";
-
-    auto rank_index = std::find(std::begin(ranks), std::end(ranks), c.rank) - std::begin(ranks);
-    auto suit_index = std::find(std::begin(suits), std::end(suits), c.suit) - std::begin(suits);
-
-    return suit_index * 13 + rank_index; // 0..51
-}
-
-int process_cards(const Card& card){
+inline constexpr int process_cards(const Card& card){
     char rank = card.rank;
     int rank_val;
     char suit = card.suit;
@@ -61,4 +50,23 @@ static constexpr std::array<Hand, 1326> init_all_possible_hands(){
 }
 
 inline constexpr std::array<Hand, 1326> all_possible_hands = init_all_possible_hands();
-#endif //POKAH_RIVER_ABSTRACTION_H
+
+static constexpr std::array<HandInt, 1326> init_all_possible_hands_int() {
+    std::array<HandInt, 1326> all_possible_hands{};
+    int count = 0;
+
+    for (int i = 0; i < NUM_DECK - 1; ++i) {
+        for (int j = i + 1; j < NUM_DECK; ++j) {
+            all_possible_hands[count++] = {
+                    process_cards(full_deck[i]),
+                    process_cards(full_deck[j])
+            };
+        }
+    }
+
+    return all_possible_hands;
+}
+
+// compile-time initialization
+inline constexpr std::array<HandInt, 1326> all_possible_hands_int = init_all_possible_hands_int();
+#endif
