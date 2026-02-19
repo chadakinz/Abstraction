@@ -44,6 +44,3 @@ TEST_CASE("test_get_canonical_hand", "[canonical]"){
     REQUIRE(canonicalize_cards(hand5) != canonicalize_cards(hand4));
 
 }
-TEST_CASES("test_all_canonical_hands", "[canonical]"){
-
-}

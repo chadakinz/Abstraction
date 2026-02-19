@@ -19,3 +19,4 @@ struct CanonicalHandHash{
 };
 
 inline std::unordered_set<CanonicalHand,CanonicalHandHash> canonical_hands_set;
+int canonical_hand_weight(const CanonicalHand& canonical_hand);

@@ -15,6 +15,7 @@ struct Card {
     }
 };
 
+
 inline constexpr Card EMPTY_CARD = Card{'?', '?'};
 
 #endif

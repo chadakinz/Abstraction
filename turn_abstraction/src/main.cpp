@@ -14,6 +14,7 @@
 #include <thread>
 
 
+
 constexpr static int NUM_THREADS = 8;
 inline bool are_cards_seen(const std::array<int, 4>& cards, const std::array<int, 52>& seen_cards){
     if (seen_cards[cards[0]] == 1 || seen_cards[cards[1]] == 1 || seen_cards[cards[2]] == 1
@@ -46,7 +47,6 @@ void save_equity_vector_to_csv(
 
     out.close();
 }
-
 int main() {
 
     printf("TEST\n");
@@ -133,7 +133,8 @@ int main() {
               << global_eq_dist_list.size()
               << "\n";
     printf("Saving to file\n");
-    save_equity_vector_to_csv(global_eq_dist_list, "equity_results.csv");
+    save_equity_vector_to_csv(global_eq_dist_list, "equity_weights.csv");
 
     return 0;
+
 }

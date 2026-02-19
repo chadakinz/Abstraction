@@ -54,7 +54,22 @@ std::array<std::array<int, 4>, 4> canonicalize_cards(const std::array<Card,4>& c
     return buckets;
 }
 
-
+int canonical_hand_weight(const CanonicalHand& canonical_hand){
+    int count = 0;
+    for(int i = 0; i < 4; i++){
+        if(canonical_hand[0][i] == 0){
+            break;
+        }
+        count += 1;
+    }
+    if(count== 1){
+        return 6;
+    }else if(count == 4){
+        return 1;
+    }else{
+        return 3;
+    }
+}
 /*
 int main() {
     // stores unique canonical hands

@@ -16,6 +16,29 @@
 #include "constants.h"
 #include "hand_groups.hpp"
 
+inline constexpr Card unprocess_cards(int x) {
+    Card card{};
+
+    int rank_val = x / 4;
+    int suit_val = x % 4;
+
+    // Decode rank
+    if (rank_val <= 7) {
+        card.rank = static_cast<char>('2' + rank_val);
+    } else if (rank_val == 8) card.rank = 'T';
+    else if (rank_val == 9) card.rank = 'J';
+    else if (rank_val == 10) card.rank = 'Q';
+    else if (rank_val == 11) card.rank = 'K';
+    else /* rank_val == 12 */ card.rank = 'A';
+
+    // Decode suit
+    if (suit_val == 0) card.suit = 'c';
+    else if (suit_val == 1) card.suit = 'd';
+    else if (suit_val == 2) card.suit = 'h';
+    else /* suit_val == 3 */ card.suit = 's';
+
+    return card;
+}
 
 inline constexpr int process_cards(const Card& card){
     char rank = card.rank;

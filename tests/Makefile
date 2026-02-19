@@ -10,7 +10,7 @@ LIBS := -lpheval -lCatch2Main -lCatch2
 
 DEPENDED_FILES := ../turn_abstraction/src/canonical.o ../turn_abstraction/src/get_equity_distribution.o
 
-TESTS := test_canonical.o
+TESTS := test_canonical.o test_get_equity_distribution.o
 
 RUN_TESTS := run_test
 
@@ -24,3 +24,6 @@ $(RUN_TESTS): $(DEPENDED_FILES) $(TESTS)
 
 ../turn_abstraction/src/%.o: ../turn_abstraction/src/%.cpp
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -f $(DEPENDED_FILES) $(TESTS) $(RUN_TESTS)
